@@ -11,12 +11,30 @@
         
     <div class="col-md-4">
         <div class="card">
-            <div class="card-header">Add New Category</div>
+            <div class="card-header">Add New Item</div>
             <div class="card-body">
-                <form action="{{ url('/admin/category/add') }}" method="post" enctype="multipart/form-data">
+                <form action="{{ url('/admin/item/add') }}" method="post" enctype="multipart/form-data">
                         @csrf 
 
                         <table class="table table-sm">
+
+                        <tr>
+                             <td>
+                                <label class="form-control">Category</label>
+                            </td>
+
+                             <td>
+                                <select name="category_id" class="form-control">
+                                    @foreach($categories as $category)
+                                    <option value="{{ $category->id }}">
+                                        {{ $category->name }}
+                                    </option>
+                                    @endforeach
+                                </select>
+                            </td>
+
+                        </tr>
+                            
                             <tr>
                                 <td>
                                     <label class="form-control">Name</label>
@@ -58,35 +76,38 @@
 
     <div class="col-md-8">
         <div class="card">
-            <div class="card-header">Category List</div>
+            <div class="card-header">Item List</div>
             <div class="card-body">
                 <table class="table table-hover table-sm">
                         <tr>
-                            <th>No</th>
+                            <th>ID</th>
+                            <th>Category</th>
+
                             <th>Name</th>
                             <th>Photo</th>
                             <th>Remark</th>
                             <th>Delete</th>
                             <th>Update</th>
                         </tr>
-                        @foreach($categories as $category)
+                        @foreach($items as $item)
                         <tr>
                                 
-                            <td> {{ $category->id }}</td>
-                            <td> {{ $category->name }}</td>
+                            <td> {{ $item->id }}</td>
+                            <td> {{ $item->category->name }}</td>
+                            <td> {{ $item->name }}</td>
                             <td> 
-                                <img width="50px" height="50px" src="{{ asset("images/category/$category->photo") }}"> 
+                                <img width="50px" height="50px" src="{{ asset("images/item/$item->photo") }}"> 
                             </td>
 
-                            <td> {{ $category->remark }}</td>
+                            <td> {{ $item->remark }}</td>
                             <td> 
-                                <a href="{{ url("/admin/category/del/{$category->id}") }}" class="btn btn-danger btn-sm">
+                                <a href="{{ url("/admin/item/del/{$item->id}") }}" class="btn btn-danger btn-sm">
                                 Delete
                                 </a>
                             </td>
 
                             <td> 
-                                <a href="{{ url("/admin/category/upd/{$category->id}") }}" class="btn btn-warning btn-sm">
+                                <a href="{{ url("/admin/item/upd/{$item->id}") }}" class="btn btn-warning btn-sm">
                                 Update
                                 </a>
                             </td>
