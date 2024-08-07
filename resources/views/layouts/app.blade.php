@@ -8,6 +8,13 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>Hazel OnlineShop</title>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+
+    <script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
+
+    
+    <link rel="stylesheet" type="text/css" href="{{ asset('jquery.exzoom.css') }} ">
+    <script src="{{ asset('jquery.exzoom.js') }}"></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
